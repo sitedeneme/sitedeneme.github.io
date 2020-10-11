@@ -1,3 +1,19 @@
+"use strict";
+
+// İmport Modules
+const express = require("express");
+const exphbs = require('express-handlebars');
+const app = express();
+const path = require("path");
+const port = process.env.PORT || 3000;
+const server = require('http').createServer(app);
+const io = require('socket.io')(server);
+const xss = require("xss");
+
+// İmport Public
+app.use("/public", express.static(path.join(__dirname, "./public")));
+
+
 // Wiev Engine
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
